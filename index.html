@@ -5,11 +5,8 @@
 <title>CSS parallax</title>
 <style>
 
-  /* Parallax base styles
-  --------------------------------------------- */
-
-  .parallax {
-    height: 500px; /* fallback for older browsers */
+  .container {
+    /*height: 500px;  fallback for older browsers */
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
@@ -17,15 +14,15 @@
     perspective: 300px;
   }
 
-  .parallax__group {
+  .parallax-section {
     position: relative;
-    height: 500px; /* fallback for older browsers */
+    /* height: 500px; fallback for older browsers */
     height: 100vh;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
   }
 
-  .parallax__layer {
+  .layer {
     position: absolute;
     top: 0;
     left: 0;
@@ -33,92 +30,57 @@
     bottom: 0;
   }
 
-  .parallax__layer--fore {
-    -webkit-transform: translateZ(90px) scale(.7);
-    transform: translateZ(90px) scale(.7);
-    z-index: 1;
-  }
-
-  .parallax__layer--base {
+  .base {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
     z-index: 4;
 
   }
 
-  #group1 {
-    z-index: 5; /* slide over group 2 */
+  #section1 {
+    z-index: 5; 
   }
-  #group1 .parallax__layer--base {
-    background: rgb(102,204,102);
-  }
-
-  #group2 {
-    z-index: 3; /* slide under groups 1 and 3 */
-  }
-  #group2 .parallax__layer--back {
-    background: rgb(123,210,102);
+  #section1 .base {
+    background: #fff;
   }
 
-  #group3 {
-    z-index: 4; /* slide over group 2 and 4 */
+  #section2 {
+    z-index: 3; 
   }
-  #group3 .parallax__layer--base {
-    background: rgb(153,216,101);
-  }
-
-  #group4 {
-    z-index: 2; /* slide under group 3 and 5 */
-  }
-  #group4 .parallax__layer--deep {
-    background: rgb(184,223,101);
+  #section2 .background {
+    background: #F6CEEC;
   }
 
-  #group5 {
-    z-index: 3; /* slide over group 4 and 6 */
+  #section3 {
+    z-index: 2; 
   }
-  #group5 .parallax__layer--base {
-    background: rgb(214,229,100);
-  }
-
-  #group6 {
-    z-index: 2; /* slide under group 5 and 7 */
-  }
-  #group6 .parallax__layer--back {
+  #section3 .background {
     background: rgb(245,235,100);
   }
 
-  #group7 {
-    z-index: 3; /* slide over group 7 */
+  #section4 {
+    z-index: 3; 
   }
-  #group7 .parallax__layer--base {
-    background: rgb(255,241,100);
+  #section4 .base {
+    background: #fff;
   }
 
-  .parallax__layer--back {
+  .background {
     -webkit-transform: translateZ(-300px) scale(2);
     transform: translateZ(-300px) scale(2);
       
     z-index: 3;
   }
 
-  .parallax__layer--deep {
-    -webkit-transform: translateZ(-600px) scale(3);
-    transform: translateZ(-600px) scale(3);
-    z-index: 2;
-  }
-
-
-  .parallax__group {
+  .parallax-section {
     -webkit-transition: -webkit-transform 0.5s;
     transition: transform 0.5s;
   }
 
-  .parallax {
+  .container {
     font-size: 200%;
   }
 
-   /* centre the content in the parallax layers */
   .title {
     text-align: center;
     position: absolute;
@@ -134,34 +96,35 @@
 
 <body>
 
-  <div class="parallax">
-    <div id="group1" class="parallax__group">
-      <div class="parallax__layer parallax__layer--base">
-        <div class="title">Base Layer</div>
+  <div class="container">
+    <div id="section1" class="parallax-section">
+      <div class="layer base">
+        <div class="title">Base</div>
       </div>
     </div>
-    <div id="group2" class="parallax__group">
-      <div class="parallax__layer parallax__layer--base">
-        <div class="title">Base Layer</div>
+    <div id="section2" class="parallax-section">
+     <div class="layer background">
+        <div class="title">Background</div>
       </div>
-      <div class="parallax__layer parallax__layer--back">
-        <div class="title">Background Layer</div>
+      <div class="layer base">
+        <div class="title">Base</div>
       </div>
+     
     </div>
   
   
   
-    <div id="group6" class="parallax__group">
-      <div class="parallax__layer parallax__layer--back">
-        <div class="title">Background Layer</div>
+    <div id="section3" class="parallax-section">
+      <div class="layer background">
+        <div class="title">Background</div>
       </div>
-      <div class="parallax__layer parallax__layer--base">
-        <div class="title">Base Layer</div>
+      <div class="layer base">
+        <div class="title">Base</div>
       </div>
     </div>
-    <div id="group7" class="parallax__group">
-      <div class="parallax__layer parallax__layer--base">
-        <div class="title">Base Layer</div>
+    <div id="section4" class="parallax-section">
+      <div class="layer base">
+        <div class="title">Base</div>
       </div>
     </div>
   </div>
